@@ -1,5 +1,5 @@
 <template>
-  <button class="qui-btn">
+  <button class="qui-btn" @click="btnClickEvent">
     <span>{{msg}}</span>
   </button>
 </template>
@@ -8,12 +8,11 @@
   export default {
     props: {
       msg: {
-        default: '下载'
-      }
-    },
-    methods: {
-      btnClickEvent: function () {
-        alert(this.msg)
+        default: '下载',
+        type: String
+      },
+      btnClickEvent: {
+        type: Function
       }
     }
   }
