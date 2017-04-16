@@ -1,6 +1,6 @@
 <template>
   <div id="pageQuiButton">
-    <qui-btn msg="确定" class="small" v-on:click="btnClickEvent"></qui-btn>
+    <qui-btn msg="确定" class="small" v-on:btnClickEvent="doSth"></qui-btn>
   </div>
 </template>
 

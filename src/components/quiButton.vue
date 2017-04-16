@@ -14,6 +14,7 @@
     methods: {
       btnClickEvent: function () {
         alert(this.msg)
+        this.$emit('btnClickEvent')
       }
     }
   }
