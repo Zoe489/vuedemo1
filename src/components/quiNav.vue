@@ -1,7 +1,10 @@
 <template>
   <div class="qui-nav nav-type-2">
-    <a v-for="(item,index) in items" :class="[commonClass,item.active?activeClass: '']">
-      <span class="nav-txt">{{item.text}}</span>
+    <a v-for="(item,index) in items"
+      :class="[commonClass, item.active ? activeClass : '']">
+      <span class="nav-txt" @click="navClickEvent(item, index)">
+        {{item.text}}
+      </span>
     </a>
   </div>
 </template>
@@ -37,11 +40,13 @@ export default {
   attached: function () {},
   methods: {
     navClickEvent: function (item, index) {
-      items.forEach(function (el) {
+      console.log('item', item)
+      console.log('index', index)
+      this.items.forEach(function (el) {
         el.active = false
       })
-      items[index].active = true
-      this.$emit('navClickEvent', items, index)
+      this.items[index].active = true
+      this.$emit('navClickEvent', this.items, index)
     }
   },
   components: {}
