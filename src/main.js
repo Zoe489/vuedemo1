@@ -5,7 +5,7 @@ import App from './App' /* 引入App这个组件 */
 import router from './router' /* 引入路由配置 */
 // import $ from 'jquery'
 import './assets/css/bootstrap.min.css'
-import './assets/js/bootstrap.min.js'
+// import './assets/js/bootstrap.min.js'
 
 Vue.config.productionTip = false
 
