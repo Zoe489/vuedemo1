@@ -1,39 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import Hello from '@/components/Hello'
-import index from '../pages/index.vue'
-import pageQuiButton from '../pages/pageQuiButton.vue'
-import pageQuiList from '../pages/pageQuiList'
-import pageQuiNav from '../pages/pageQuiNav'
+import index from '../pages/index'
+import detail from '../pages/detail'
+import list from '../pages/list'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'Hello', /* 用来识别的 */
-    //   component: Hello
-    // },
     {
       path: '/',
-      name: 'index',
+      name: 'index', /* 用来识别的 */
       component: index
     },
     {
-      path: '/btn',
-      name: 'btn',
-      component: pageQuiButton
+      path: '/detail',
+      name: 'detail', /* 用来识别的 */
+      component: detail
     },
     {
       path: '/list',
-      name: 'list',
-      component: pageQuiList
-    },
-    {
-      path: '/nav',
-      name: 'nav',
-      component: pageQuiNav
+      name: 'list', /* 用来识别的 */
+      component: list
     }
   ]
 })
