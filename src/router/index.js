@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import index from '../pages/index'
 import detail from '../pages/detail'
 import list from '../pages/list'
+import contact from '../pages/contact'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/list',
       name: 'list', /* 用来识别的 */
       component: list
+    },
+    {
+      path: '/contact',
+      name: 'contact', /* 用来识别的 */
+      component: contact
     }
   ]
 })

@@ -5,30 +5,23 @@
       <div class="container" >
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">电影</a>
-        </div>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">电影</a>
+      </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+              <!-- <li class="active"><a href="#" >首页 <span class="sr-only">(current)</span></a></li>
               <li><a href="#/list">列表详情</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更新 <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
+              <li><a href="#/contact">联系我们</a></li> -->
+              <li v-for="(item, index) in tabitems" @click="selectTab(item)"
+                  v-bind:class="'active': item.checked" v-bind:src="{{item.tab_href}}">
+                {{item.tabname}}
               </li>
             </ul>
 
@@ -55,7 +48,35 @@
 <!-- 脚本 -->
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data: {
+    // return: {
+    checked: false,
+    tabitems: [
+      {
+        tabname: '首页',
+        tab_href: '#'
+      },
+      {
+        tabname: '列表详情',
+        tab_href: '#/list'
+      },
+      {
+        tabname: '更新',
+        tab_href: '#/contact'
+      }
+    ]
+    // }
+  },
+  methods: {
+    selectTab: function (item) {
+      if (typeof item.checked === 'undefined') {
+        this.$set(item, 'checked', true)
+      } else {
+        item.checked = !item.checked
+      }
+    }
+  }
 }
 </script>
 
