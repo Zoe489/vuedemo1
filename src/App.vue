@@ -19,8 +19,7 @@
               <!-- <li class="active"><a href="#" >首页 <span class="sr-only">(current)</span></a></li>
               <li><a href="#/list">列表详情</a></li>
               <li><a href="#/contact">联系我们</a></li> -->
-              <li v-for="(item, index) in tabitems" @click="selectTab(item)"
-                  v-bind:class="'active': item.checked" v-bind:src="{{item.tab_href}}">
+              <li v-for="(item, index) in tabitems">
                 {{item.tabname}}
               </li>
             </ul>
