@@ -27,6 +27,11 @@
           </tr>
         </tbody>
       </table>
+      <button type="button" name="button" class="btn btn-default">
+        <a href="#/addnew">
+          <span class="glyphicon glyphicon-plus">新增</span>
+        </a>
+      </button>
     </div> <!-- table  -->
   </div> <!-- container   -->
 </template>

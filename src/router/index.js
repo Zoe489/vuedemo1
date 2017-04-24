@@ -5,6 +5,7 @@ import index from '../pages/index'
 import detail from '../pages/detail'
 import list from '../pages/list'
 import contact from '../pages/contact'
+import addnew from '../pages/addnew'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/contact',
       name: 'contact', /* 用来识别的 */
       component: contact
+    },
+    {
+      path: '/addnew',
+      name: 'addnew', /* 用来识别的 */
+      component: addnew
     }
   ]
 })
