@@ -3,7 +3,7 @@
     <div class="jumbotron">
       <h1>{{msg}}</h1>
       <p>This is a website about movie!</p>
-      <p><a href="#" class="btn btn-primary btn-lg" role="button">了解详情</a></p>
+      <p><a href="#/list" class="btn btn-primary btn-lg" role="button">了解详情</a></p>
     </div> <!-- jumbotron -->
     <div class="row">
       <div class="col-sm-6 col-md-4" v-for="(item, index) in movies">
