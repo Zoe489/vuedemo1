@@ -3,10 +3,12 @@
 import Vue from 'vue'
 import App from './App' /* 引入App这个组件 */
 import router from './router' /* 引入路由配置 */
+import VueResource from 'vue-resource'
 // import $ from 'jquery'
 import './assets/css/bootstrap.min.css'
 import './assets/js/bootstrap.min.js'
 
+Vue.use(VueResource)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
