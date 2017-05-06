@@ -23,4 +23,15 @@ router.post('/setMovieInformation', (req, res) => {
   })
 })
 
+router.get('/getMovieInformation', (req, res) => {
+  MovieModel.find((err, data) => {
+    if (err) {
+      res.send(err)
+      console.log(err)
+    } else {
+      res.send(data)
+      console.log(data)  // 为什么在后台没有打印出来
+    }
+  })
+})
 module.exports = router

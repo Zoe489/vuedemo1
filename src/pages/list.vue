@@ -23,7 +23,7 @@
             <td>{{item.updateYear}}</td>
             <td><a href="#">查看</a></td>
             <td><a href="#">修改</a></td>
-            <td><a href="#" class="btn btn-danger">删除</a></td>
+            <td><a class="btn btn-danger">删除</a></td>
           </tr>
         </tbody>
       </table>
@@ -31,6 +31,9 @@
         <a href="#/addnew">
           <span class="glyphicon glyphicon-plus">新增</span>
         </a>
+      </button>
+      <button type="button" name="button"  v-on:click="getMovie">
+        添加
       </button>
     </div> <!-- table  -->
   </div> <!-- container   -->
@@ -41,40 +44,41 @@ export default {
   data: function () {
     return {
       movies: [
-        {
-          moviename: '嫌疑人x的献身',
-          moviedetail: '东野圭吾经典作品',
-          movieaddress: '../static/嫌疑人x的献身海报.jpg',
-          director: '苏有朋',
-          country: '中国',
-          language: '中文',
-          updateYear: '2017'
-        },
-        {
-          moviename: '嫌疑人x的献身',
-          moviedetail: '东野圭吾经典作品',
-          movieaddress: '../static/嫌疑人x的献身海报.jpg',
-          director: '苏有朋',
-          country: '中国',
-          language: '中文',
-          updateYear: '2017'
-        },
-        {
-          moviename: '嫌疑人x的献身',
-          moviedetail: '东野圭吾经典作品',
-          movieaddress: '../static/嫌疑人x的献身海报.jpg',
-          director: '苏有朋',
-          country: '中国',
-          language: '中文',
-          updateYear: '2017'
-        }
+        // {
+        //   moviename: '',
+        //   moviedetail: '',
+        //   movieaddress: '',
+        //   director: '',
+        //   country: '',
+        //   language: '',
+        //   updateYear: ''
+        //   // moviedetail: ''
+        // }
       ]
     }
   },
   computed: {},
+  // mounted: function () {
+  //   this.$nextTick(function () {
+  //   // 代码保证 this.$el 在 document 中
+  //     // this.getMovie()
+  //     // console.log(this.movie)
+  //   })
+  // },
   ready: function () {},
   attached: function () {},
-  methods: {},
+  methods: {
+    getMovie () {
+      this.$http.get('/api/getMovieInformation')
+      .then((response) => {
+        // console.log(response)
+        console.log(response.body)  // 返回的为什么是页面还报304错误
+        // console.log(response.body[0])
+        this.movies = response.body
+      })
+      // console.log(this.movies)
+    }
+  },
   components: {}
 }
 </script>

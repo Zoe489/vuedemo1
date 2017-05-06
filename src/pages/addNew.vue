@@ -76,6 +76,7 @@ export default {
       movieAddress: '',
       updateYear: '',
       moviedetail: ''
+      // isSubmitSuccessed: false
     }
   },
   computed: {},
@@ -93,9 +94,20 @@ export default {
         updateYear: this.updateYear,
         moviedetail: this.moviedetail
       }
-      this.$http.post('/setMovieInformation', params)
+      this.$http.post('/api/setMovieInformation', params)
       .then((response) => {
         console.log(response)
+        if (response.body === 'add new movie successed') {
+          // this.isSubmitSuccessed = true
+          this.moviename = ''
+          this.director = ''
+          this.country = ''
+          this.language = ''
+          this.postAddress = ''
+          this.movieAddress = ''
+          this.updateYear = ''
+          this.moviedetail = ''
+        }
       })
       .catch((reject) => {
         console.log(reject)
