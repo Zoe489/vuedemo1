@@ -23,7 +23,7 @@
             <td>{{item.updateYear}}</td>
             <td><a href="#">查看</a></td>
             <td><a href="#">修改</a></td>
-            <td><a class="btn btn-danger">删除</a></td>
+            <td><a class="btn btn-danger" v-on:click="delMovie(index)">删除</a></td>
           </tr>
         </tbody>
       </table>
@@ -31,9 +31,6 @@
         <a href="#/addnew">
           <span class="glyphicon glyphicon-plus">新增</span>
         </a>
-      </button>
-      <button type="button" name="button"  v-on:click="getMovie">
-        添加
       </button>
     </div> <!-- table  -->
   </div> <!-- container   -->
@@ -58,25 +55,36 @@ export default {
     }
   },
   computed: {},
-  // mounted: function () {
-  //   this.$nextTick(function () {
-  //   // 代码保证 this.$el 在 document 中
-  //     // this.getMovie()
-  //     // console.log(this.movie)
-  //   })
-  // },
+  mounted: function () {
+    this.$nextTick(function () {
+    // 代码保证 this.$el 在 document 中
+      this.getMovie()
+      console.log(this.movie)
+    })
+  },
   ready: function () {},
   attached: function () {},
   methods: {
     getMovie () {
       this.$http.get('/api/getMovieInformation')
       .then((response) => {
-        // console.log(response)
-        console.log(response.body)  // 返回的为什么是页面还报304错误
-        // console.log(response.body[0])
         this.movies = response.body
       })
-      // console.log(this.movies)
+    },
+    delMovie (index) {
+      const moviename = this.movies[index].moviename
+      console.log(moviename)
+      this.$http.post('/api/delMovie', moviename)
+      .then((response) => {
+        if (response.status === 200) {
+          this.getMovie()
+        } else {
+          console.log('失败')
+        }
+      })
+      .catch((reject) => {
+        console.log(reject)
+      })
     }
   },
   components: {}

@@ -48,7 +48,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">提交成功</h4>
+            <h4 class="modal-title" id="myModalLabel">{{isSubmitSuccessed}}</h4>
           </div>
           <!-- <div class="modal-body">
             ...
@@ -75,8 +75,8 @@ export default {
       postAddress: '',
       movieAddress: '',
       updateYear: '',
-      moviedetail: ''
-      // isSubmitSuccessed: false
+      moviedetail: '',
+      isSubmitSuccessed: ''
     }
   },
   computed: {},
@@ -96,8 +96,7 @@ export default {
       }
       this.$http.post('/api/setMovieInformation', params)
       .then((response) => {
-        console.log(response)
-        if (response.body === 'add new movie successed') {
+        if (response.status === 200) {
           // this.isSubmitSuccessed = true
           this.moviename = ''
           this.director = ''
@@ -107,6 +106,9 @@ export default {
           this.movieAddress = ''
           this.updateYear = ''
           this.moviedetail = ''
+          this.isSubmitSuccessed = '提交成功 '
+        } else {
+          this.isSubmitSuccessed = '提交失败'
         }
       })
       .catch((reject) => {
